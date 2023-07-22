@@ -26,7 +26,7 @@
 #
 # Version: 1.0
 
-FROM registry.access.redhat.com/ubi8/ubi:8.1
+FROM registry.access.redhat.com/ubi8/ubi@sha256:ba803ecfde6ad36bb739ab2858c0eea2e4c0257a42905ffa25018368079ec2f9
 
 RUN yum -y update && yum clean all
 

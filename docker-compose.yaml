@@ -1,0 +1,29 @@
+# Author: Erivando Sena<erivandoramos@unilab.edu.br>
+# Description: This Docker Compose configuration file is used to define 
+# and manage containers for the "ubis-redhat" application.
+#
+
+version: "3.9"
+
+services:
+  app-ubis-redhat:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: erivando/ubis-redhat-arm64:latest
+    container_name: ubis-redhat
+    restart: always
+    volumes:
+      - data:/var/www/html
+    ports:
+      - "8880:80"
+    networks:
+      - development
+
+volumes:
+  data:
+    driver: local
+    
+networks:
+  development:
+    driver: bridge
