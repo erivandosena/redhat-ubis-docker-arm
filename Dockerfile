@@ -34,11 +34,7 @@ RUN yum --disableplugin=subscription-manager -y module enable php:8.* \
   && yum --disableplugin=subscription-manager -y install httpd php \
   && yum --disableplugin=subscription-manager clean all
 
-RUN mv /usr/share/testpage/* /var/www/html \
-    && rm -R /usr/share/testpage
-
 RUN chown -Rf apache:apache /var/www/html \
- && echo "<?php phpinfo(); phpinfo(INFO_MODULES); ?>" > /var/www/html/phpinfo.php \
  && sed -i 's/user = apache/;user = apache/' etc/php-fpm.d/www.conf \
  && sed -i 's/group = apache/;group = apache/' etc/php-fpm.d/www.conf
 
